@@ -6,21 +6,34 @@ class VerificationCodeInput extends StatefulWidget {
   final ValueChanged<String> onCompleted;
   final TextInputType keyboardType;
   final int length;
+  final EdgeInsetsGeometry contentPadding;
+  final EdgeInsetsGeometry listWidgetPadding;
+  final EdgeInsetsGeometry padding;
 
   @override
   _verificationCodeInputState createState() => new _verificationCodeInputState(
       onCompleted: onCompleted,
       keyboardType: this.keyboardType,
-      length: length);
+      length: length,
+      contentPadding: contentPadding,
+      listWidgetPadding: listWidgetPadding,
+      padding: padding);
 }
 
 class _verificationCodeInputState extends State<VerificationCodeInput> {
   _verificationCodeInputState(
       {this.onCompleted,
       this.keyboardType = TextInputType.number,
-      this.length = 4});
+      this.length = 4,
+      this.contentPadding,
+      this.listWidgetPadding,
+      this.padding
+      });
 
   ValueChanged<String> onCompleted;
+  EdgeInsetsGeometry contentPadding;
+  EdgeInsetsGeometry listWidgetPadding;
+  EdgeInsetsGeometry padding;
   TextInputType keyboardType = TextInputType.number;
   int length = 0;
 
@@ -51,7 +64,7 @@ class _verificationCodeInputState extends State<VerificationCodeInput> {
         decoration: InputDecoration(
           enabled: true,
           counterText: "",
-          contentPadding: new EdgeInsets.all(10.0),
+          contentPadding: contentPadding,
           errorMaxLines: 1,
           fillColor: Colors.black),
         onChanged: (String value) {
@@ -95,7 +108,7 @@ class _verificationCodeInputState extends State<VerificationCodeInput> {
       } else {
         if (j < numberVerification) {
           listWidget.add(new Padding(
-            padding: new EdgeInsets.all(5.0),
+            padding: listWidgetPadding,
           ));
         }
       }
@@ -106,7 +119,7 @@ class _verificationCodeInputState extends State<VerificationCodeInput> {
   @override
   Widget build(BuildContext context) {
     return new Padding(
-      padding: new EdgeInsets.only(left: 50.0, right: 50.0),
+      padding: padding,
       child: new Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: _createListItem()),
