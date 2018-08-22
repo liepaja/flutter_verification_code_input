@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 
 class VerificationCodeInput extends StatefulWidget {
-  VerificationCodeInput({this.onCompleted, this.keyboardType, this.length = 4});
+  VerificationCodeInput({this.onCompleted, this.keyboardType, this.length = 4, this.contentPadding, this.listWidgetPadding, this.padding});
   final ValueChanged<String> onCompleted;
   final TextInputType keyboardType;
   final int length;
